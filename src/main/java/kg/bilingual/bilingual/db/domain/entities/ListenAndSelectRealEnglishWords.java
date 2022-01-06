@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "listen_select_words")
+@Table(name = "listen_select_words_table")
 @AllArgsConstructor
 @NoArgsConstructor
 public class ListenAndSelectRealEnglishWords {
@@ -27,8 +27,8 @@ public class ListenAndSelectRealEnglishWords {
     private int duration;
 
     //связь между таблицами Test и ListenAndSelectRealEnglishWords
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    @JoinColumn
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+//    @JoinColumn
     private Test  test;
 
     // связь между таблицами Audio и ListenAndSelectRealEnglishWords

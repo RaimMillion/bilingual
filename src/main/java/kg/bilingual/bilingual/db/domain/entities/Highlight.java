@@ -8,10 +8,11 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "ListenAndType_table")
+@Table(name = "highlight_table")
 @AllArgsConstructor
 @NoArgsConstructor
-public class ListenAndType {
+public class Highlight {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -22,20 +23,17 @@ public class ListenAndType {
 
     @Column(name = "duration")
     private int duration;
+    @Column(name = "passage")
+    private String passage;
 
-    @Column(name = "attempt")
-    private int attempt;
-//?
-    @Column(name = "correct_answer")
-    private int correctAnswer;
-//?
-    @Column(name = "audio")
-    private String audio;
-
-//связь между таблицами Test и ListenAndType
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    private Test test;
+    @Column(name = "question_statement")
+    private String questionStatement;
 
 
 
+
+    //связь между таблицами Test и Highlight
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+//    @JoinColumn
+    private Test  test;
 }

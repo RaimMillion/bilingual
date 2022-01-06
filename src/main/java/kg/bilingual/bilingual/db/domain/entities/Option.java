@@ -8,27 +8,28 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "audio_table")
+@Table(name = "option_table")
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class Audio {
+public class Option {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "word")
-    private String word;
-//?
-    @Column(name = "audio")
-    private String audio;
+    @Column(name = "idea")
+    private String idea;
+
 
     @Column(name = "isTrue")
     private boolean isTrue;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    private ListenAndSelectRealEnglishWords listenAndSelectRealEnglishWords;
+    @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private Title titles;
 
-
+    //связь между таблицами Test и Option
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+//    @JoinColumn
+    private Test test;
 }

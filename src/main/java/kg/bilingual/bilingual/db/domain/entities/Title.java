@@ -8,23 +8,25 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "words")
+@Table(name = "table_title")
+
 @AllArgsConstructor
 @NoArgsConstructor
-public class Word {
+public class Title {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "word")
-    private String word;
+    @Column(name = "title")
+    private String idea;
 
-    @Column(name = "isTrue")
-    private boolean isTrue;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    private SelectRealEnglishWords selectRealEnglishWords;
+    @Column(name = "checkBox")
+    private boolean checkBox;
+
+    @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private Option options;
 
 
 }

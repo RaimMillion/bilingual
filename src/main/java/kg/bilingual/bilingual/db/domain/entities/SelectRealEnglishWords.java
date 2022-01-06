@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "select_words")
+@Table(name = "selectRealEnglishWords_table")
 @AllArgsConstructor
 @NoArgsConstructor
 public class SelectRealEnglishWords {
@@ -26,12 +26,12 @@ public class SelectRealEnglishWords {
     private int duration;
 
 //связь между таблицами Test и SelectRealEnglishWords
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn
-    private Test  test;
+    private Test test;
 
 // связь между таблицами Word и SelectRealEnglishWords
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,
             mappedBy = "selectRealEnglishWords")
     private List<Word> words = new ArrayList<>();
 
